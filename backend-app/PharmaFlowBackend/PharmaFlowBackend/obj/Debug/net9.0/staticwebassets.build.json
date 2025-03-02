@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "KAMY6bNv93Wd9hlZQoH3V4+sIsh46DcHTyO91tQz0cw=",
+  "Source": "PharmaFlowBackend",
+  "BasePath": "_content/PharmaFlowBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
