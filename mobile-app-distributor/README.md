@@ -1,1 +1,1 @@
-Readme file for mobile application for customers
+Readme file for mobile application for distributors
