@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.logo {
+  display: flex;
+  background-color: rgba(182, 255, 208, 0.646);
+  background-image: url("../src/pf_background.jpg");
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  padding: 10px 0;
+}

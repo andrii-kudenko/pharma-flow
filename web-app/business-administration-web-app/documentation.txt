@@ -1,0 +1,3 @@
+Project documentation
+
+to run a server - bun run start
