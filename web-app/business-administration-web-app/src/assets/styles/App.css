@@ -1,0 +1,9 @@
+
+.logo {
+  display: flex;
+  background-image: url("../images/pf_background.jpg");
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  padding: 10px 0;
+}
