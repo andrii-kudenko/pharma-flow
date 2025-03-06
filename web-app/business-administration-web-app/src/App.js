@@ -1,4 +1,5 @@
-
+import React from 'react';
+import Layout from './components/Layout';
 import pf_logo from './assets/images/pf_logo_white.svg'
 import './assets/styles/App.css'
 import './assets/styles/tailwind.css'
@@ -20,11 +21,19 @@ function App() {
 }
 
 const HomePage = () => (
-  <Router>
-    <div className='logo'>
+  <Layout>
+    <h1 className="text-3xl font-bold">Welcome to My App</h1>
+    <p>This is the main content area.</p>
+  </Layout>  
+);
+
+export default App;
+
+
+{/* <div className='logo'>
     <img src={pf_logo} alt='logo' className='h-30'></img>
-    </div>
-    
+</div>
+<Router>
     <nav>
       <Link to="/" className='text-3xl'>Home</Link> | <Link to="/about">About</Link>
       
@@ -35,6 +44,4 @@ const HomePage = () => (
       <Route path="/about" element={<About />} />
     </Routes>
   </Router>
-);
-
-export default App;
+*/}

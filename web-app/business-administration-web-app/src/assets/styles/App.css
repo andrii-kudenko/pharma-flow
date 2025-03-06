@@ -7,3 +7,29 @@
   background-size: cover;
   padding: 10px 0;
 }
+
+.nav-title #nav-toggle-btn {
+  transition: transform 1s ease;
+  cursor: pointer;
+}
+
+.nav-title:hover #nav-toggle-btn {
+  animation: moveTogglebtn 1.5s infinite ease-in-out;
+}
+
+@keyframes moveTogglebtn {
+  0% {
+      transform: translateY(0) translateX(0%);
+      opacity: 0.3;
+  }
+
+  50% {
+      transform: translateY(0) translateX(-25%);
+      opacity: 1;
+  }
+
+  100% {
+      transform: translateY(0) translateX(0%);
+      opacity: 0.3;
+  }
+}
