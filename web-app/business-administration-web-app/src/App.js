@@ -9,6 +9,7 @@ import LoadingScreen from './components/LoadingScreen';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import About from "./pages/About";
+import BusinessAnalytics from './pages/BusinessAnalytics';
 
 function App() {
   const [isLoaded, setIsLoaded] = useState(false)
@@ -21,10 +22,15 @@ function App() {
 }
 
 const HomePage = () => (
-  <Layout>
-    <h1 className="text-3xl font-bold">Welcome to My App</h1>
-    <p>This is the main content area.</p>
-  </Layout>  
+  <Router>
+    <Layout>
+      <Routes>        
+        <Route path="/" element={<Home/>} />
+        <Route path="/business-analytics" element={<BusinessAnalytics/>} />
+        <Route path="/about" element={<About/>} />
+      </Routes>
+    </Layout>
+  </Router>  
 );
 
 export default App;

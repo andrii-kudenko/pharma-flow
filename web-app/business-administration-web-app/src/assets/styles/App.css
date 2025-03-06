@@ -8,7 +8,12 @@
   padding: 10px 0;
 }
 
+#nav-toggle-btn {
+  transform: translateY(25%) translateX(25%);
+}
+
 .nav-title #nav-toggle-btn {
+  transform: translateY(0) translateX(0);
   transition: transform 1s ease;
   cursor: pointer;
 }
