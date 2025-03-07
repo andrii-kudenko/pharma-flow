@@ -1,6 +1,10 @@
 Project documentation
 
-to run a server - bun run start
+to run a server:
+bun run start
 
 Идея! Когда открываешь сайт, идет загрузка такой анимацией:
 посередине страницы линия пульса нарисовывается с левого по правый край, с ускорением с середины по конец. Потом, эта линия исчезает также с левого по правый край
+
+to run tailwind:
+bun tailwindcss -i ./src/assets/styles/index.css -o ./src/assets/styles/tailwind.css --watch
