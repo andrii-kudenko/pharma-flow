@@ -1,0 +1,46 @@
+
+.logo {
+  display: flex;
+  background-image: url("../images/pf_background.jpg");
+  background-repeat: no-repeat;
+  justify-content: center;
+  background-size: cover;
+  padding: 10px 0;
+}
+
+#nav-toggle-btn {
+  transform: translateY(0%) translateX(25%);
+  color:rgb(70, 179, 70);;
+}
+
+.nav-title #nav-toggle-btn {
+  transform: translateY(10%) translateX(0);
+  transition: transform 1s ease;
+  cursor: pointer;
+}
+
+.nav-title:hover #nav-toggle-btn {
+  animation: moveTogglebtn 1.5s infinite ease-in-out;
+}
+
+@keyframes moveTogglebtn {
+  0% {
+      transform: translateY(10%) translateX(0%);
+      opacity: 0.3;
+  }
+
+  50% {
+      transform: translateY(10%) translateX(-25%);
+      opacity: 1;
+  }
+
+  100% {
+      transform: translateY(10%) translateX(0%);
+      opacity: 0.3;
+  }
+}
+
+li:has(a.active) {
+  /* Your styles here */
+  background-color: rgb(70, 179, 70); /* Example style */
+}
