@@ -14,10 +14,10 @@ struct ScanProductView: View {
                 Image("Camera")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.7) // Adjusted height
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.7) 
                     .clipped()
 
-                Spacer() // Pushes button up
+                Spacer()
 
                 NavigationLink(destination: AddProductView()) {
                     Text("Take Picture")
@@ -33,7 +33,7 @@ struct ScanProductView: View {
             }
             .background(Color.black)
             .navigationTitle("Scan Product")
-            .navigationBarBackButtonHidden(false) // ✅ Back button added
+            .navigationBarBackButtonHidden(false)
         }
         .ignoresSafeArea(.all, edges: .bottom) 
     }

@@ -13,7 +13,7 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             VStack(alignment: .leading) {
-                // Greeting
+                
                 Text("Welcome, \(username) 👋")
                     .font(.largeTitle)
                     .fontWeight(.bold)
