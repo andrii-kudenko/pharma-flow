@@ -6,11 +6,17 @@ import pf_logo from '../assets/images/pf_logo_white.svg';
 
 const Layout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSublistOpen, setIsSublistOpen] = useState(false);
+
   const location = useLocation();
 
   const toggleSidebar = () => {
     console.log(isSidebarOpen);
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const toggleSublist = () => {
+    setIsSublistOpen(!isSublistOpen);
   };
 
   const getPageTitle = () => {
@@ -19,6 +25,16 @@ const Layout = ({ children }) => {
         return 'Home';
       case '/business-analytics':
         return 'Business Analytics';
+      case '/inspect-sales-trends':
+        return 'Inspect Sales Trends';
+      case '/inspect-sales-forecast':
+        return 'Inspect Sales Forecast';
+      case '/inspect-total-revenue':
+        return 'Inspect Total Revenue';
+      case '/evaluate-high-value-customers':
+        return 'Evaluate High Value Customers';
+      case '/generate-financial-reports':
+        return 'Generate Financial Reports';
       case '/about':
         return 'About';
       default:
@@ -43,7 +59,26 @@ const Layout = ({ children }) => {
               <NavLink to="/" className="block w-full h-full p-4" activeClassName="bg-gray-900">Home</NavLink>
             </li>
             <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
-              <NavLink to="/business-analytics" className="block w-full h-full p-4 truncate" activeClassName="bg-gray-900">Business Analytics</NavLink>
+              <button onClick={toggleSublist} className="block w-full h-full p-4 text-left">Business Analytics</button>
+              {isSublistOpen && (
+                <ul className="pl-4">
+                  <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
+                    <NavLink to="/inspect-sales-trends" className="block w-full h-full p-4" activeClassName="bg-gray-900">Inspect Sales Trends</NavLink>
+                  </li>
+                  <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
+                    <NavLink to="/inspect-sales-forecast" className="block w-full h-full p-4" activeClassName="bg-gray-900">Inspect Sales Forecast</NavLink>
+                  </li>
+                  <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
+                    <NavLink to="/inspect-total-revenue" className="block w-full h-full p-4" activeClassName="bg-gray-900">Inspect Total Revenue</NavLink>
+                  </li>
+                  <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
+                    <NavLink to="/evaluate-high-value-customers" className="block w-full h-full p-4" activeClassName="bg-gray-900">Evaluate High Value Customers</NavLink>
+                  </li>
+                  <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
+                    <NavLink to="/generate-financial-reports" className="block w-full h-full p-4" activeClassName="bg-gray-900">Generate Financial Reports</NavLink>
+                  </li>
+                </ul>
+              )}
             </li>
             <li className="hover:bg-gray-700 transition-opacity duration-300 ease-in-out">
               <NavLink to="/about" className="block w-full h-full p-4" activeClassName="bg-gray-900">About</NavLink>
@@ -59,7 +94,7 @@ const Layout = ({ children }) => {
             <FaBars />
           </button>
           <h1 className="text-2xl text-white font-bold">{getPageTitle()}</h1>
-          <img src={pf_logo} alt='logo' className='h-15 hidden md:block'></img>
+          <img src={pf_logo} alt='logo' className='h-10 absolute right-2 md:relative'></img>
         </div>
         <div className='p-2'>
           {children}
