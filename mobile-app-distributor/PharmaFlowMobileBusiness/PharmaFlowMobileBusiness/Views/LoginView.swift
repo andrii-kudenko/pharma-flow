@@ -13,18 +13,24 @@ struct LoginView: View {
 
     @State private var inputUsername: String = ""
     @State private var password: String = ""
-
+    let backgroundColor = Color(red: 227/255, green: 253/255, blue: 249/255)
     var body: some View {
-        VStack(spacing: 0) { // Ensures elements are properly spaced
-            // Logo / Image Section
-            Image("PharmaFlow")
-                .resizable()
-                .scaledToFill() // Ensures it stretches properly
-                .frame(maxWidth: .infinity, maxHeight: UIScreen.main.bounds.height * 0.4) // Takes 40% of screen height
-                .clipped()
-                .opacity(0.3)
+        VStack(spacing: 0) {
             
-            Spacer() // Pushes login fields down
+            
+
+            ZStack {
+                backgroundColor.edgesIgnoringSafeArea(.all)
+                
+                Image("PharmaFlow")
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.45)
+                    .clipped()
+                    .offset(y: 40)
+            }
+
+            Spacer()
 
             // Login Form
             VStack(spacing: 16) {
@@ -40,8 +46,8 @@ struct LoginView: View {
 
                 Button(action: {
                     if !inputUsername.isEmpty && !password.isEmpty {
-                        username = inputUsername  // Store username
-                        isLoggedIn = true  // Navigate to main app
+                        username = inputUsername
+                        isLoggedIn = true
                     }
                 }) {
                     Text("Sign In")
@@ -54,22 +60,20 @@ struct LoginView: View {
                 }
             }
             .padding()
-            .background(Color.white)
+            .frame(maxWidth: .infinity)
+            .background(backgroundColor)
             .cornerRadius(20)
             .shadow(radius: 5)
-            .frame(maxWidth: .infinity)
             .padding(.horizontal, 20)
 
-            Spacer(minLength: 50) // Adds space to push form to the bottom
+            Spacer(minLength: 50)
         }
-        .edgesIgnoringSafeArea(.top) // Ensures image doesn't get clipped
-        .frame(maxWidth: .infinity, maxHeight: .infinity) // Ensures full height is used
-        .background(Color.white) // Keeps a clean look
-        .navigationBarHidden(true) // Hides navigation bar
+        .edgesIgnoringSafeArea(.top)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(backgroundColor)
+        .navigationBarHidden(true)
     }
 }
-
-
 
 #Preview {
     LoginView(isLoggedIn: .constant(false), username: .constant(""))
