@@ -11,6 +11,13 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import BusinessAnalytics from './pages/BusinessAnalytics';
 
+import Dashboard from './pages/Dashboard';
+import SalesForecast from './pages/BusinessAnalytics/SalesForecast';
+import TotalRevenue from './pages/BusinessAnalytics/TotalRevenue';
+import HighValueCustomers from './pages/BusinessAnalytics/HighValueCustomers';
+import FinancialReports from './pages/BusinessAnalytics/FinancialReports';
+import SalesTrends from './pages/BusinessAnalytics/SalesTrends';
+
 function App() {
   const [isLoaded, setIsLoaded] = useState(false)
   return (
@@ -26,8 +33,13 @@ const HomePage = () => (
     <Layout>
       <Routes>        
         <Route path="/" element={<Home/>} />
-        <Route path="/business-analytics" element={<BusinessAnalytics/>} />
+        <Route path="/business-analytics" element={<Dashboard/>} />
         <Route path="/about" element={<About/>} />
+        <Route path="/inspect-sales-trends" element={<SalesTrends/>} />
+        <Route path="/inspect-sales-forecast" element={<SalesForecast/>} />
+        <Route path="/inspect-total-revenue" element={<TotalRevenue/>} />
+        <Route path="/evaluate-high-value-customers" element={<HighValueCustomers/>} />
+        <Route path="/generate-financial-reports" element={<FinancialReports/>} />
       </Routes>
     </Layout>
   </Router>  

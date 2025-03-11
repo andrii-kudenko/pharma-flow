@@ -40,7 +40,7 @@
   }
 }
 
-li:has(a.active) {
+a.active{
   /* Your styles here */
   background-color: rgb(70, 179, 70); /* Example style */
 }
