@@ -15,7 +15,7 @@ struct AddProductView: View {
     @State private var showAlert = false
     @State private var alertTitle = ""
     @State private var alertMessage = ""
-    
+
     var body: some View {
         VStack(alignment: .leading) {
             Text("New Product")
@@ -23,7 +23,7 @@ struct AddProductView: View {
                 .foregroundColor(.black)
                 .padding(.leading, 16)
                 .padding(.top, 16)
-            
+
             Form {
                 Section(header: Text("Name").foregroundColor(.black)) {
                     TextField("Product", text: $productName)
@@ -46,12 +46,13 @@ struct AddProductView: View {
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                 }
-            }.scrollContentBackground(.hidden)
-                .background(Color.gray.opacity(0.3))
-                .cornerRadius(20)
-            
+            }
+            .scrollContentBackground(.hidden)
+            .background(Color.gray.opacity(0.3))
+            .cornerRadius(20)
+
             Spacer()
-            
+
             Button(action: {
                 if productName.isEmpty || productDescription.isEmpty || certificate.isEmpty || quantity.isEmpty {
                     alertTitle = "Update Failed"
@@ -77,7 +78,7 @@ struct AddProductView: View {
         }
         .background(Color.white)
         .navigationTitle("New Product")
-        
+        .navigationBarBackButtonHidden(false)
     }
 }
 
@@ -86,6 +87,8 @@ struct AddProductView_Previews: PreviewProvider {
         AddProductView()
     }
 }
+
+
 
 
 
