@@ -11,7 +11,7 @@ import SwiftUI
 struct PharmaFlowMobileCustomerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
         }
     }
 }

@@ -11,6 +11,11 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		F86391882D7A0C1D003836FE /* Views */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Views;
+			sourceTree = "<group>";
+		};
 		F8D2C4812D743353006A717E /* PharmaFlowMobileCustomer */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PharmaFlowMobileCustomer;
@@ -33,6 +38,7 @@
 			isa = PBXGroup;
 			children = (
 				F8D2C4812D743353006A717E /* PharmaFlowMobileCustomer */,
+				F86391882D7A0C1D003836FE /* Views */,
 				F8D2C4802D743353006A717E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +67,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
+				F86391882D7A0C1D003836FE /* Views */,
 				F8D2C4812D743353006A717E /* PharmaFlowMobileCustomer */,
 			);
 			name = PharmaFlowMobileCustomer;
