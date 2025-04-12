@@ -8,38 +8,43 @@
 import SwiftUI
 
 struct ScanProductView: View {
+    let username: String
+    @Binding var isNavigatedToHome: Bool // Tracks navigation back to HomeView
+    @State private var isNavigatedToUpdate: Bool = false // Tracks navigation to UpdateProductView
+
     var body: some View {
-        NavigationView {
-            VStack {
-                Image("Camera")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.7) 
-                    .clipped()
+        VStack {
+            Image("Camera")
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.8)
+                .clipped()
 
-                Spacer()
+            Spacer()
 
-                NavigationLink(destination: AddProductView()) {
-                    Text("Take Picture")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding(.horizontal, 20)
-                        .padding(.bottom, 80)
-                }
+            NavigationLink(
+                destination: UpdateProductView(isNavigatedToHome: $isNavigatedToHome, username: username),
+                isActive: $isNavigatedToUpdate
+            ) {
+                Text("Take Picture")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .frame(maxWidth: .infinity)
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                    .padding(.horizontal, 20)
+                    .padding(.bottom, 10)
             }
-            .background(Color.black)
-            .navigationTitle("Scan Product")
-            .navigationBarBackButtonHidden(false)
         }
-        .ignoresSafeArea(.all, edges: .bottom) 
+        .background(Color.black)
+        .navigationTitle("Scan Product")
+        .navigationBarBackButtonHidden(false)
     }
 }
 
+
 #Preview {
-    ScanProductView()
+    ScanProductView(username: "User", isNavigatedToHome: .constant(true))
 }
 

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @State private var isNavigatedToScan: Bool = false
+    
     let username: String
     
     var body: some View {
@@ -70,8 +73,14 @@ struct HomeView: View {
                     QuickActionButton(icon: "list.bullet.rectangle", text: "View Orders", color: .blue)
                 }
                 
+                NavigationLink(
+                                    destination: ScanProductView(username: username, isNavigatedToHome: $isNavigatedToScan),
+                                    isActive: $isNavigatedToScan
+                                ) {
+                    QuickActionButton(icon: "camera.fill", text: "Scan Product", color: .yellow)
+                }
                 NavigationLink(destination: AddProductView()) {
-                    QuickActionButton(icon: "plus.circle.fill", text: "Add Product", color: .green)
+                    QuickActionButton(icon: "plus.circle.fill", text: "View Orders", color: .green)
                 }
             }
         }

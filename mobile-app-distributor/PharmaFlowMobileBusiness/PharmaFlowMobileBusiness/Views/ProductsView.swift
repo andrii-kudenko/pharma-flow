@@ -11,6 +11,8 @@ struct ProductsView: View {
     @State private var searchText = ""
     @State private var selectedFilter: String = "All"
 
+    let username: String
+    
     let filters = ["All", "Low Stock", "High Stock"]
     
     let products: [Product] = [
@@ -51,7 +53,7 @@ struct ProductsView: View {
                 }
                 
                 // Add Product Button
-                NavigationLink(destination: ScanProductView()) {
+                NavigationLink(destination: ScanProductView(username: username, isNavigatedToHome: .constant(true))) {
                     Text("Add Product")
                         .font(.headline)
                         .foregroundColor(.white)

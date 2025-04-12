@@ -8,8 +8,15 @@
 import SwiftUI
 
 struct AddProductView: View {
-    @State private var productName: String = "Product"
-    @State private var productDescription: String = "This is the description of the product"
+    @State private var productName: String = ""
+    
+    @State private var gtin: String = "(01)04015630920129"
+    @State private var lot: String = "(10)66248702"
+    @State private var expdate: String = "(17)240531"
+    @State private var refnum: String = "(240)03184897190"
+    @State private var prodate: String = "(11)230511"
+    
+    @State private var productDescription: String = "Description"
     @State private var certificate: String = "Product Certificate"
     @State private var quantity: String = ""
     @State private var showAlert = false
@@ -30,12 +37,6 @@ struct AddProductView: View {
                         .foregroundColor(.black)
                 }
                 
-                Section(header: Text("Description").foregroundColor(.black)) {
-                    TextEditor(text: $productDescription)
-                        .frame(height: 200)
-                        .foregroundColor(.black)
-                }
-                
                 Section(header: Text("Certificate").foregroundColor(.black)) {
                     TextField("Enter certificate", text: $certificate)
                         .foregroundColor(.black)
@@ -46,6 +47,37 @@ struct AddProductView: View {
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                 }
+                
+                Section(header: Text("GTIN").foregroundColor(.black)) {
+                    TextField("0", text: $gtin)
+                        .foregroundColor(.black)
+                }
+                
+                Section(header: Text("LOT").foregroundColor(.black)) {
+                    TextField("0", text: $lot)
+                        .foregroundColor(.black)
+                }
+                
+                Section(header: Text("Expiry Date").foregroundColor(.black)) {
+                    TextField("Date", text: $expdate)
+                        .foregroundColor(.black)
+                }
+                
+                Section(header: Text("Refrence Number").foregroundColor(.black)) {
+                    TextField("0", text: $refnum)
+                        .foregroundColor(.black)
+                }
+                
+                Section(header: Text("Production Date").foregroundColor(.black)) {
+                    TextField("Date", text: $prodate)
+                        .foregroundColor(.black)
+                }
+                
+                Section(header: Text("Description (Optional)").foregroundColor(.black)) {
+                    TextEditor(text: $productDescription)
+                        .frame(height: 200)
+                        .foregroundColor(.black)
+                }
             }
             .scrollContentBackground(.hidden)
             .background(Color.gray.opacity(0.3))
@@ -54,7 +86,7 @@ struct AddProductView: View {
             Spacer()
 
             Button(action: {
-                if productName.isEmpty || productDescription.isEmpty || certificate.isEmpty || quantity.isEmpty {
+                if productName.isEmpty || certificate.isEmpty || quantity.isEmpty {
                     alertTitle = "Update Failed"
                     alertMessage = "An error occurred when updating the inventory of \(productName). Please ensure all fields are filled out correctly."
                 } else {
@@ -63,7 +95,7 @@ struct AddProductView: View {
                 }
                 showAlert = true
             }) {
-                Text("Update Inventory")
+                Text("Add Product")
                     .font(.headline)
                     .foregroundColor(.white)
                     .padding()

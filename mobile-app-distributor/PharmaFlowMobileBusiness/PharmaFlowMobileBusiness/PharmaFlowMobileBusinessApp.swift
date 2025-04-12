@@ -34,7 +34,7 @@ struct PharmaFlowMobileBusinessApp: App {
                             Text("Clients")
                         }
 
-                    ProductsView()
+                    ProductsView(username: username)
                         .tabItem {
                             Image(systemName: "capsule.fill")
                             Text("Products")
