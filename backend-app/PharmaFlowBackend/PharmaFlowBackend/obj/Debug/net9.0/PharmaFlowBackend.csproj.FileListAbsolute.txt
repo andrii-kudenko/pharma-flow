@@ -166,3 +166,4 @@ C:\Documents\College Sem 6\Software Engineering\se-project\PharmaFlow\backend-ap
 C:\Documents\College Sem 6\Software Engineering\se-project\PharmaFlow\backend-app\PharmaFlowBackend\PharmaFlowBackend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Documents\College Sem 6\Software Engineering\se-project\PharmaFlow\backend-app\PharmaFlowBackend\PharmaFlowBackend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Documents\College Sem 6\Software Engineering\se-project\PharmaFlow\backend-app\PharmaFlowBackend\PharmaFlowBackend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Documents\College Sem 6\Software Engineering\se-project\PharmaFlow\backend-app\PharmaFlowBackend\PharmaFlowBackend\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
