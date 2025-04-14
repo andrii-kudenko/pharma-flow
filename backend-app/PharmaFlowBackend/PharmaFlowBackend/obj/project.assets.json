@@ -75,24 +75,32 @@
     ]
   },
   "packageFolders": {
-    "/Users/dan_mac/.nuget/packages/": {}
+    "C:\\Users\\kuden\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dan_mac/Desktop/Sheridan/Third Year Courses/Sem_6/Soft_Engineering/Final Project/PharmaFlow/web-app/PharmaFlowBackend/PharmaFlowBackend/PharmaFlowBackend.csproj",
+      "projectUniqueName": "C:\\Documents\\College Sem 6\\Software Engineering\\se-project\\PharmaFlow\\backend-app\\PharmaFlowBackend\\PharmaFlowBackend\\PharmaFlowBackend.csproj",
       "projectName": "PharmaFlowBackend",
-      "projectPath": "/Users/dan_mac/Desktop/Sheridan/Third Year Courses/Sem_6/Soft_Engineering/Final Project/PharmaFlow/web-app/PharmaFlowBackend/PharmaFlowBackend/PharmaFlowBackend.csproj",
-      "packagesPath": "/Users/dan_mac/.nuget/packages/",
-      "outputPath": "/Users/dan_mac/Desktop/Sheridan/Third Year Courses/Sem_6/Soft_Engineering/Final Project/PharmaFlow/web-app/PharmaFlowBackend/PharmaFlowBackend/obj/",
+      "projectPath": "C:\\Documents\\College Sem 6\\Software Engineering\\se-project\\PharmaFlow\\backend-app\\PharmaFlowBackend\\PharmaFlowBackend\\PharmaFlowBackend.csproj",
+      "packagesPath": "C:\\Users\\kuden\\.nuget\\packages\\",
+      "outputPath": "C:\\Documents\\College Sem 6\\Software Engineering\\se-project\\PharmaFlow\\backend-app\\PharmaFlowBackend\\PharmaFlowBackend\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "/Users/dan_mac/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\kuden\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -111,7 +119,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net9.0": {
@@ -141,7 +149,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
