@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PharmaFlowBackend.Data;
+using PharmaFlowBackend.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,7 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql("Host=d
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<ItemService>();
 
 var app = builder.Build();
 
