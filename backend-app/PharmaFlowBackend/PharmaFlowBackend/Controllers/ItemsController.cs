@@ -5,7 +5,7 @@ using PharmaFlowBackend.Services;
 namespace PharmaFlowBackend.Controllers;
 
 [ApiController]
-[Route("api/items/[controller]")]
+[Route("api/items")]
 public class ItemsController : ControllerBase
 {
     //using Item Service
@@ -19,6 +19,7 @@ public class ItemsController : ControllerBase
     
     //getAllItems
     [HttpGet]
+    [Route("getAllItems")]
     public async Task<ActionResult<IEnumerable<item>>> GetAllItems()
     {
         var items = await _itemService.GetAllItemsAsync();

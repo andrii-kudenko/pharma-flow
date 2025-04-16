@@ -19,11 +19,13 @@ public partial class order
     public DateTime? last_updated { get; set; }
 
     public virtual client? client { get; set; }
+    
+    public decimal total_price { get; }
 
     public virtual ICollection<order_lot> order_lots { get; set; } = new List<order_lot>();
 }
 
 public enum OrderStatus
 {
-    Pending, Confirmed, Shipped, Delivered, Cancelled
+    Pending, Confirmed, Shipped, Delivered, Cancelled , Completed
 }
