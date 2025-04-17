@@ -20,12 +20,14 @@ struct ItemCatalogView: View {
                         .foregroundColor(.red)
                 } else {
                     List(viewModel.items) { item in
-                        VStack(alignment: .leading) {
-                            Text(item.codeName)
-                                .font(.headline)
-                            if let price = item.priceUsd {
-                                Text("$\(price)")
-                                    .foregroundColor(.secondary)
+                        NavigationLink(destination: ItemDetailView(item: item)) {
+                            VStack(alignment: .leading) {
+                                Text(item.codeName)
+                                    .font(.headline)
+                                if let price = item.priceUsd {
+                                    Text("$\(price)")
+                                        .foregroundColor(.secondary)
+                                }
                             }
                         }
                     }

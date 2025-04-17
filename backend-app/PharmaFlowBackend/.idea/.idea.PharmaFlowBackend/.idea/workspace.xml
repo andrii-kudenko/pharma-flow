@@ -9,26 +9,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f93e53d6-9896-476a-822c-b4403dae719d" name="Changes" comment="Minimal updates and fixes in models">
-      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/ItemCatalogViewModel.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/ItemsController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/ItemsController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Properties/launchSettings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfoInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfoInputs.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Constants.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/Constants.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomerApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomerApp.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/ItemService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/ItemService.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/LoginView.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ProductCatalogView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ItemCatalogView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ItemCatalogView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ItemCatalogView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ItemDetailedView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/ItemDetailedView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/PharmaFlowMobileBusinessApp.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/PharmaFlowMobileBusinessApp.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/HomeView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/HomeView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/ProductsView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/ProductsView.swift" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +115,7 @@
       <option name="presentableId" value="Default" />
       <updated>1744835176980</updated>
       <workItem from="1744835179778" duration="2645000" />
-      <workItem from="1744840313548" duration="6172000" />
+      <workItem from="1744840313548" duration="6762000" />
     </task>
     <task id="LOCAL-00001" summary="getAllItems APIController and Service files added">
       <option name="closed" value="true" />

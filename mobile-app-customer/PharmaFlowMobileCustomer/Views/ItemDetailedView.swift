@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProductDetailView: View {
+struct ItemDetailView: View {
     let item: Item
 
     var body: some View {
@@ -66,5 +66,5 @@ struct ProductDetailView: View {
             canBeOrdered: true,
             priceUsd: 12.50
         )
-    ProductDetailView(item: item)
+    ItemDetailView(item: item)
 }
