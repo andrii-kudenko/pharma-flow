@@ -79,8 +79,8 @@ struct HomeView: View {
                                 ) {
                     QuickActionButton(icon: "camera.fill", text: "Scan Product", color: .yellow)
                 }
-                NavigationLink(destination: AddProductView(barcode: "")) {
-                    QuickActionButton(icon: "plus.circle.fill", text: "Manual Add Product", color: .green)
+                NavigationLink(destination: AddProductView()) {
+                    QuickActionButton(icon: "plus.circle.fill", text: "View Orders", color: .green)
                 }
             }
         }

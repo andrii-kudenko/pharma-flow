@@ -6,18 +6,16 @@
 //
 
 import SwiftUI
-import PostgresClientKit
 
 struct AddProductView: View {
-    let barcode: String // Raw barcode string passed to the view
-
     @State private var productName: String = ""
-    @State private var manufacture: String = ""
-    @State private var gtin: String = ""
-    @State private var lot: String = ""
-    @State private var expdate: String = ""
-    @State private var refnum: String = ""
-    @State private var prodate: String = ""
+    
+    @State private var gtin: String = "(01)04015630920129"
+    @State private var lot: String = "(10)66248702"
+    @State private var expdate: String = "(17)240531"
+    @State private var refnum: String = "(240)03184897190"
+    @State private var prodate: String = "(11)230511"
+    
     @State private var productDescription: String = "Description"
     @State private var certificate: String = "Product Certificate"
     @State private var quantity: String = ""
@@ -39,47 +37,42 @@ struct AddProductView: View {
                         .foregroundColor(.black)
                 }
                 
-                Section(header: Text("Manufacture").foregroundColor(.black)) {
-                    TextField("Manufacture", text: $manufacture)
-                        .foregroundColor(.black)
-                }
-
                 Section(header: Text("Certificate").foregroundColor(.black)) {
                     TextField("Enter certificate", text: $certificate)
                         .foregroundColor(.black)
                 }
-
+                
                 Section(header: Text("Quantity").foregroundColor(.black)) {
                     TextField("Enter quantity", text: $quantity)
                         .foregroundColor(.black)
                         .keyboardType(.numberPad)
                 }
-
+                
                 Section(header: Text("GTIN").foregroundColor(.black)) {
-                    TextField("GTIN", text: $gtin)
+                    TextField("0", text: $gtin)
                         .foregroundColor(.black)
                 }
-
+                
                 Section(header: Text("LOT").foregroundColor(.black)) {
-                    TextField("LOT", text: $lot)
+                    TextField("0", text: $lot)
                         .foregroundColor(.black)
                 }
-
+                
                 Section(header: Text("Expiry Date").foregroundColor(.black)) {
                     TextField("Date", text: $expdate)
                         .foregroundColor(.black)
                 }
-
-                Section(header: Text("Reference Number").foregroundColor(.black)) {
-                    TextField("Reference Number", text: $refnum)
+                
+                Section(header: Text("Refrence Number").foregroundColor(.black)) {
+                    TextField("0", text: $refnum)
                         .foregroundColor(.black)
                 }
-
+                
                 Section(header: Text("Production Date").foregroundColor(.black)) {
-                    TextField("Production Date", text: $prodate)
+                    TextField("Date", text: $prodate)
                         .foregroundColor(.black)
                 }
-
+                
                 Section(header: Text("Description (Optional)").foregroundColor(.black)) {
                     TextEditor(text: $productDescription)
                         .frame(height: 200)
@@ -93,27 +86,14 @@ struct AddProductView: View {
             Spacer()
 
             Button(action: {
-                addProductToDatabase(
-                    productName: productName,
-                    gtin: gtin,
-                    lot: lot,
-                    expdate: expdate,
-                    refnum: refnum,
-                    prodate: prodate,
-                    description: productDescription,
-                    manufacture: manufacture,
-                    certificate: certificate,
-                    quantity: quantity
-                ) { success in
-                    if success {
-                        alertTitle = "Success"
-                        alertMessage = "Product added successfully to the database."
-                    } else {
-                        alertTitle = "Error"
-                        alertMessage = "Failed to add product to the database."
-                    }
-                    showAlert = true
+                if productName.isEmpty || certificate.isEmpty || quantity.isEmpty {
+                    alertTitle = "Update Failed"
+                    alertMessage = "An error occurred when updating the inventory of \(productName). Please ensure all fields are filled out correctly."
+                } else {
+                    alertTitle = "Update Successful!"
+                    alertMessage = "The inventory for \(productName) has been successfully updated."
                 }
+                showAlert = true
             }) {
                 Text("Add Product")
                     .font(.headline)
@@ -131,100 +111,14 @@ struct AddProductView: View {
         .background(Color.white)
         .navigationTitle("New Product")
         .navigationBarBackButtonHidden(false)
-        .onAppear {
-            parseBarcode(barcode)
-        }
-    }
-
-    func addProductToDatabase(productName: String, gtin: String, lot: String, expdate: String, refnum: String, prodate: String, description: String, manufacture: String, certificate: String, quantity: String, completion: @escaping (Bool) -> Void) {
-        DispatchQueue.global(qos: .background).async {
-            do {
-                // Generate a unique UUID for the product
-                let productId = UUID().uuidString
-
-                // Format dates
-                let formattedExpDate = formatDateString(expdate)
-                let formattedProDate = formatDateString(prodate)
-
-                // Configure the connection
-                var configuration = PostgresClientKit.ConnectionConfiguration()
-                configuration.host = "dpg-cvm53mpr0fns7380krq0-a.oregon-postgres.render.com"
-                configuration.database = "pharmaflow"
-                configuration.user = "pharmaflow_user"
-                configuration.credential = .md5Password(password: "pPTucvAdn67V6zUrWoE5EoKzxjLrgRuT")
-
-                let connection = try PostgresClientKit.Connection(configuration: configuration)
-                defer { connection.close() }
-
-                // Prepare the SQL statement
-                let text = """
-                    INSERT INTO products (id, product_name, gtin, lot_number, exp_date, ref_number, prod_date, description, manufacturer, certificate, quantity)
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
-                """
-                let statement = try connection.prepareStatement(text: text)
-                defer { statement.close() }
-
-                // Execute the query with parameter values
-                try statement.execute(parameterValues: [
-                    productId,              // id
-                    productName,            // product_name
-                    gtin,                   // gtin
-                    lot,                    // lot_number
-                    formattedExpDate,       // exp_date
-                    refnum,                 // ref_number
-                    formattedProDate,       // prod_date
-                    description,            // description
-                    manufacture,            // manufacturer
-                    certificate,            // certificate
-                    quantity                // quantity
-                ])
-
-                DispatchQueue.main.async {
-                    completion(true) // Success
-                }
-            } catch {
-                print("Database insertion error: \(error)")
-                DispatchQueue.main.async {
-                    completion(false) // Failure
-                }
-            }
-        }
-    }
-
-    private func formatDateString(_ dateString: String) -> String {
-        guard dateString.count == 6 else { return "1970-01-01 00:00:00" } // Default invalid date
-        let year = "20" + dateString.prefix(2) // "24" -> "2024"
-        let month = dateString.dropFirst(2).prefix(2) // "05"
-        let day = dateString.dropFirst(4) // "31"
-        return "\(year)-\(month)-\(day) 00:00:00" // "YYYY-MM-DD HH:MM:SS"
-    }
-    
-    private func parseBarcode(_ barcode: String) {
-        // Ensure barcode has correct length
-        guard barcode.count == 58 else {
-            print("Invalid barcode length: \(barcode.count) characters")
-            return
-        }
-
-        // Extract values based on known positions
-        gtin = "\(String(barcode[barcode.index(barcode.startIndex, offsetBy: 2)..<barcode.index(barcode.startIndex, offsetBy: 16)]))"
-        lot = "\(String(barcode[barcode.index(barcode.startIndex, offsetBy: 18)..<barcode.index(barcode.startIndex, offsetBy: 26)]))"
-        expdate = "\(String(barcode[barcode.index(barcode.startIndex, offsetBy: 29)..<barcode.index(barcode.startIndex, offsetBy: 35)]))"
-        refnum = "\(String(barcode[barcode.index(barcode.startIndex, offsetBy: 38)..<barcode.index(barcode.startIndex, offsetBy: 49)]))"
-        prodate = "\(String(barcode[barcode.index(barcode.startIndex, offsetBy: 52)..<barcode.index(barcode.startIndex, offsetBy: 58)]))"
-
-        
-        
-        // Debugging output to verify parsed values
-        print("GTIN: \(gtin)")
-        print("LOT: \(lot)")
-        print("Exp. Date: \(expdate)")
-        print("Reference Number: \(refnum)")
-        print("Production Date: \(prodate)")
     }
 }
 
-
+struct AddProductView_Previews: PreviewProvider {
+    static var previews: some View {
+        AddProductView()
+    }
+}
 
 
 
