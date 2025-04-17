@@ -44,7 +44,7 @@ namespace PharmaFlowBackend.Controllers
                     id = created.id,
                     order_number = created.order_number,
                     total_items = created.total_items,
-                    created_at = created.created_at ?? DateTime.UtcNow
+                    created_at = created.created_at 
                 };
 
                 return CreatedAtAction(nameof(GetById), new { id = result.id }, result);
@@ -78,6 +78,21 @@ namespace PharmaFlowBackend.Controllers
             _db.orders.Remove(order);
             await _db.SaveChangesAsync();
             return NoContent();
+        }
+        
+        
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var orders = await _orderService.GetAllOrdersAsync();
+            return Ok(orders);
+        }
+
+        [HttpGet("details/{id}")]
+        public async Task<IActionResult> GetOrderDetails(Guid id)
+        {
+            var order = await _orderService.GetOrderDetailsByIdAsync(id);
+            return order == null ? NotFound() : Ok(order);
         }
     }
 }

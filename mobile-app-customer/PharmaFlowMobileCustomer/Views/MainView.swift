@@ -21,8 +21,8 @@ struct MainView: View {
                 }
             
             OrdersView()
-                .tabItem {
-                    Label("Orders", systemImage: "clock")
+                .tabItem{
+                    Label("Orders", systemImage: "shippingbox.fill")
                 }
             
             AccountView()

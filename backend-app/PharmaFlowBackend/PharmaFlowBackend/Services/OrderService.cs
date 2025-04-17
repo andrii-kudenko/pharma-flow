@@ -15,7 +15,7 @@ public class OrderService
         _db = db;
     }
 
-    public async Task<order> CreateOrderAsync(CreateOrderRequest request)
+    public async Task<OrderConfirmationDTO> CreateOrderAsync(CreateOrderRequest request)
     {
         using var transaction = await _db.Database.BeginTransactionAsync();
         
@@ -70,6 +70,60 @@ public class OrderService
         await _db.SaveChangesAsync();
         await transaction.CommitAsync();
 
-        return newOrder;
+        return new OrderConfirmationDTO
+        {
+            id = newOrder.id,
+            order_number = newOrder.order_number,
+            total_items = newOrder.total_items,
+            created_at = newOrder.created_at!.Value
+        };
     }
+    
+    
+    public async Task<List<OrderSummaryDto>> GetAllOrdersAsync()
+    {
+        return await _db.orders
+            .Include(o => o.client)
+            .Select(o => new OrderSummaryDto
+            {
+                id = o.id,
+                order_number = o.order_number,
+                status = o.status.ToString(),
+                client_name = o.client.f_name + " " + o.client.l_name,
+                company_name = o.client.company_name
+            })
+            .ToListAsync();
+    }
+    
+    public async Task<OrderDetailsDto?> GetOrderDetailsByIdAsync(Guid id)
+    {
+        var order = await _db.orders
+            .Include(o => o.client)
+            .Include(o => o.order_lots)
+            .ThenInclude(ol => ol.lot)
+            .ThenInclude(l => l.item)
+            .FirstOrDefaultAsync(o => o.id == id);
+
+        if (order == null) return null;
+
+        return new OrderDetailsDto
+        {
+            id = order.id,
+            order_number = order.order_number,
+            status = order.status.ToString(),
+            client_name = order.client.f_name + " " + order.client.l_name,
+            company_name = order.client.company_name,
+            delivery_address = order.client.delivery_address,
+            total_items = order.total_items,
+            total_price = order.total_price,
+            products = order.order_lots.Select(ol => new ProductInfo
+            {
+                code_name = ol.lot.item.code_name,
+                description = ol.lot.item.description,
+                quantity = ol.quantity,
+                price_per_unit = ol.lot.item.price_usd
+            }).ToList()
+        };
+    }
+    
 }

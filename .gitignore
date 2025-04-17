@@ -45,3 +45,8 @@ PharmaFlowBackend.assets.cache
 *.vs/
 
 **/Debug/
+backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs
+backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs
+backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfoInputs.cache
+backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.assets.cache
+backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.GeneratedMSBuildEditorConfig.editorconfig

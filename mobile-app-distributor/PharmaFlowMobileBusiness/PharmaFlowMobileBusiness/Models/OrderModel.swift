@@ -30,3 +30,33 @@ enum OrderStatus: String, CaseIterable {
     case delayed = "Delayed"
     case cancelled = "Cancelled"
 }
+
+
+//MARK: Used for OrderViews 
+struct OrderSummary: Identifiable, Decodable {
+    let id: UUID
+    let order_number: String
+    let status: String
+    let client_name: String
+    let company_name: String
+}
+
+struct OrderDetails: Identifiable, Decodable {
+    let id: UUID
+    let order_number: String
+    let status: String
+    let client_name: String
+    let company_name: String
+    let delivery_address: String
+    let total_items: Int
+    let total_price: Double
+    let products: [ProductInfo]
+}
+
+struct ProductInfo: Decodable {
+    let code_name: String
+    let description: String
+    let quantity: Int
+    let price_per_unit: Double
+}
+
