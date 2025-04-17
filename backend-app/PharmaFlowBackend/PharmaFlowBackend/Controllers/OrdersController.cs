@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PharmaFlowBackend.Data;
+using PharmaFlowBackend.DTOs;
 using PharmaFlowBackend.Models;
+using PharmaFlowBackend.Services;
 
 namespace PharmaFlowBackend.Controllers
 {
@@ -10,9 +12,11 @@ namespace PharmaFlowBackend.Controllers
     public class OrdersController : ControllerBase
     {
         private readonly AppDbContext _db;
-        public OrdersController(AppDbContext db)
+        private readonly OrderService _orderService;
+        public OrdersController(AppDbContext db, OrderService orderService)
         {
             _db = db;
+            _orderService = orderService;
         }
 
         [HttpGet]
@@ -29,11 +33,30 @@ namespace PharmaFlowBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(order order)
+        public async Task<IActionResult> Create([FromBody] CreateOrderRequest request)
         {
-            _db.orders.Add(order);
-            await _db.SaveChangesAsync();
-            return CreatedAtAction(nameof(GetById), new { id = order.id }, order);
+            try
+            {
+                var created = await _orderService.CreateOrderAsync(request);
+
+                var result = new OrderConfirmationDTO
+                {
+                    id = created.id,
+                    order_number = created.order_number,
+                    total_items = created.total_items,
+                    created_at = created.created_at ?? DateTime.UtcNow
+                };
+
+                return CreatedAtAction(nameof(GetById), new { id = result.id }, result);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = "Internal server error", detail = ex.Message });
+            }
         }
 
         [HttpPut("{id}")]

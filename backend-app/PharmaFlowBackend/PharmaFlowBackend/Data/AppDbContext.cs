@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using PharmaFlowBackend.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace PharmaFlowBackend.Data;
 
@@ -24,9 +25,15 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder
-            .HasPostgresEnum("order_status", new[] { "pending", "confirmed", "shipped", "delivered", "cancelled" })
-            .HasPostgresExtension("pgcrypto");
+        modelBuilder.HasPostgresEnum<OrderStatus>("order_status");
+        
+        modelBuilder.Entity<order>()
+            .Property(o => o.status)
+            .HasColumnType("order_status")
+            .HasConversion(
+                v => v.ToString().ToLower(), // Convert C# enum to lowercase string
+                v => (OrderStatus)Enum.Parse(typeof(OrderStatus), v, true) // Parse string to enum (case insensitive)
+            );
 
         modelBuilder.Entity<client>(entity =>
         {
@@ -116,8 +123,11 @@ public partial class AppDbContext : DbContext
                 .HasConversion(
                     v => v.ToString().ToLower(),
                     v => Enum.Parse<OrderStatus>(v, true))
-                .HasColumnName("status");
+                .HasColumnName("status")
+                .HasColumnType("order_status");
+            
         });
+        
 
         modelBuilder.Entity<order_lot>(entity =>
         {

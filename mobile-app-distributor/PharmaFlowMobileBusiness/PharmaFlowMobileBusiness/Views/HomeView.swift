@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @State private var isNavigatedToScan: Bool = false
     
-    let username: String
+    let username: String = "User"
     
     var body: some View {
         NavigationView {
@@ -79,8 +79,8 @@ struct HomeView: View {
                                 ) {
                     QuickActionButton(icon: "camera.fill", text: "Scan Product", color: .yellow)
                 }
-                NavigationLink(destination: AddProductView()) {
-                    QuickActionButton(icon: "plus.circle.fill", text: "View Orders", color: .green)
+                NavigationLink(destination: AddProductView(barcode: "")) {
+                    QuickActionButton(icon: "plus.circle.fill", text: "Manual Add Product", color: .green)
                 }
             }
         }
@@ -145,7 +145,7 @@ struct QuickActionButton: View {
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(username: "User")
+        HomeView()
     }
 }
 

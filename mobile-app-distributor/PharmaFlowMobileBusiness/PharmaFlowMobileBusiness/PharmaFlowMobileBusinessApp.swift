@@ -14,9 +14,8 @@ struct PharmaFlowMobileBusinessApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if isLoggedIn {
                 TabView {
-                    HomeView(username: username)
+                    HomeView()
                         .tabItem {
                             Image(systemName: "house.fill")
                             Text("Home")
@@ -34,15 +33,17 @@ struct PharmaFlowMobileBusinessApp: App {
                             Text("Clients")
                         }
 
-                    ProductsView(username: username)
+                    ProductsView()
                         .tabItem {
                             Image(systemName: "capsule.fill")
                             Text("Products")
                         }
+                    ItemCatalogView()
+                        .tabItem {
+                            Image(systemName: "pills.circle.fill")
+                            Text("Items")
+                        }
                 }
-            } else {
-                LoginView(isLoggedIn: $isLoggedIn, username: $username)
-            }
         }
     }
 }
