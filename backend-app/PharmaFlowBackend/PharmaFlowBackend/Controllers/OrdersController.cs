@@ -44,7 +44,7 @@ namespace PharmaFlowBackend.Controllers
                     id = created.id,
                     order_number = created.order_number,
                     total_items = created.total_items,
-                    created_at = created.created_at ?? DateTime.UtcNow
+                    created_at = created.created_at 
                 };
 
                 return CreatedAtAction(nameof(GetById), new { id = result.id }, result);

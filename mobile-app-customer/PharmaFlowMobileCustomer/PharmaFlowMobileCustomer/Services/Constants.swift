@@ -14,7 +14,7 @@ enum Constants {
             return "http://localhost:5062/api"
         } else {
             //replace with your local ip if testing on physical device
-            return "http://172.20.10.2:5062/api"
+            return "http://10.16.58.99:5062/api"
         }
     }
 }

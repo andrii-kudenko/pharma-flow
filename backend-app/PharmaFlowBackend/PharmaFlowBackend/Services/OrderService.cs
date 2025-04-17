@@ -15,7 +15,7 @@ public class OrderService
         _db = db;
     }
 
-    public async Task<order> CreateOrderAsync(CreateOrderRequest request)
+    public async Task<OrderConfirmationDTO> CreateOrderAsync(CreateOrderRequest request)
     {
         using var transaction = await _db.Database.BeginTransactionAsync();
         
@@ -70,6 +70,12 @@ public class OrderService
         await _db.SaveChangesAsync();
         await transaction.CommitAsync();
 
-        return newOrder;
+        return new OrderConfirmationDTO
+        {
+            id = newOrder.id,
+            order_number = newOrder.order_number,
+            total_items = newOrder.total_items,
+            created_at = newOrder.created_at!.Value
+        };
     }
 }

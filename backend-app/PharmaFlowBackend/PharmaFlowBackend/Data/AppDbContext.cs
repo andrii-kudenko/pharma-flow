@@ -25,15 +25,13 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
         modelBuilder.HasPostgresEnum<OrderStatus>("order_status");
-        
+
         modelBuilder.Entity<order>()
             .Property(o => o.status)
-            .HasColumnType("order_status")
-            .HasConversion(
-                v => v.ToString().ToLower(), // Convert C# enum to lowercase string
-                v => (OrderStatus)Enum.Parse(typeof(OrderStatus), v, true) // Parse string to enum (case insensitive)
-            );
+            .HasColumnType("order_status");
+            
 
         modelBuilder.Entity<client>(entity =>
         {

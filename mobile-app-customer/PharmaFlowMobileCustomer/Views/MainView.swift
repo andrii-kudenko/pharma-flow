@@ -20,11 +20,6 @@ struct MainView: View {
                     Label("Cart", systemImage: "cart")
                 }
             
-            OrdersView()
-                .tabItem {
-                    Label("Orders", systemImage: "clock")
-                }
-            
             AccountView()
                 .tabItem {
                     Label("Account", systemImage: "person")

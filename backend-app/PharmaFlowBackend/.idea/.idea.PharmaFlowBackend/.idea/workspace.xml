@@ -9,9 +9,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f93e53d6-9896-476a-822c-b4403dae719d" name="Changes" comment="Minimal updates and fixes in models">
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Cart.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrderConfirmationOverlay.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/OrdersController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Data/AppDbContext.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Models/order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Models/order.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Services/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Services/OrderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs" afterDir="false" />
@@ -22,8 +27,17 @@
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.model.nuget.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Order.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Order.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Product.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/Constants.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/Constants.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/OrderService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/OrderService.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/CartViewModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/CartViewModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/CartView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/CartView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrderDetailView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrdersView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="feature/view-products" />
+        <entry key="$PROJECT_DIR$/../.." value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -47,14 +61,24 @@
     &quot;assignee&quot;: &quot;DanChyst&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/DanChyst/PharmaFlow.git&quot;,
-    &quot;accountId&quot;: &quot;11a2289c-61a3-4952-a062-852235568452&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/DanChyst/PharmaFlow.git",
+    "accountId": "11a2289c-61a3-4952-a062-852235568452"
+  },
+  "recentNewPullRequestHead": {
+    "server": {
+      "useHttp": false,
+      "host": "github.com",
+      "port": null,
+      "suffix": null
+    },
+    "owner": "DanChyst",
+    "repository": "PharmaFlow"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock:///Users/dan_mac/Desktop/Sheridan/Third Year Courses/Sem_6/Soft_Engineering/Final Project/PharmaFlow/backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.AssemblyInfo.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/40ed82fa84d4e6b463e6b31159e1ba1a73cbbd05effbdd70615bdc738a10/ColumnAttribute.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -66,22 +90,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.PharmaFlowBackend: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feature/create-order&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.PharmaFlowBackend: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "feature/create-order",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.PharmaFlowBackend: https">
     <configuration name="PharmaFlowBackend: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/PharmaFlowBackend/PharmaFlowBackend.csproj" />

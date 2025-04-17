@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.Serialization;
 
 namespace PharmaFlowBackend.Models;
@@ -11,6 +12,8 @@ public partial class order
     public string order_number { get; set; } = null!;
 
     public Guid? client_id { get; set; }
+    
+    [Column(TypeName = "order_status")]
     public OrderStatus status { get; set; }
 
     public int total_items { get; set; }
