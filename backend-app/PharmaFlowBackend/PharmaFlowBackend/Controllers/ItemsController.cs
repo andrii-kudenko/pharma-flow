@@ -19,7 +19,6 @@ public class ItemsController : ControllerBase
     
     //getAllItems
     [HttpGet]
-    [Route("getAllItems")]
     public async Task<ActionResult<IEnumerable<item>>> GetAllItems()
     {
         var items = await _itemService.GetAllItemsAsync();
