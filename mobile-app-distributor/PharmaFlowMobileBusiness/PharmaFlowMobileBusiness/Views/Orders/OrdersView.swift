@@ -13,7 +13,7 @@ struct OrdersView: View {
         NavigationStack {
             Group {
                 if viewModel.isLoadingList {
-                    ProgressView("Loading Orders...")
+                    ProgressView("Loading Orders…")
                         .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else if let error = viewModel.errorMessage {
                     VStack(spacing: 16) {
@@ -22,30 +22,54 @@ struct OrdersView: View {
                             Task { await viewModel.loadOrders() }
                         }
                     }
-                } else if viewModel.allOrders.isEmpty {
-                    Text("No orders available.")
-                        .foregroundColor(.gray)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
                 } else {
-                    List(viewModel.allOrders) { order in
-                        NavigationLink {
-                            OrderDetailView(orderId: order.id)
-                        } label: {
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text(order.order_number).font(.headline)
-                                Text(order.client_name).font(.subheadline)
-                                Text(order.status.capitalized)
-                                    .font(.caption)
-                                    .foregroundColor(order.status.statusColor())
-                                    .padding(.horizontal, 6)
-                                    .padding(.vertical, 2)
-                                    .background(order.status.statusColor().opacity(0.1))
-                                    .cornerRadius(5)
+                    VStack(spacing: 10) {
+                        // search bar
+                        TextField("Search by order #", text: $viewModel.searchQuery)
+                            .textFieldStyle(.roundedBorder)
+                            .padding(.horizontal)
+                            .onChange(of: viewModel.searchQuery) { newValue in
+                                viewModel.updateSearchQuery(newValue)
                             }
-                            .padding(.vertical, 4)
+
+                        //
+                        Picker("Filter", selection: Binding(
+                            get: { viewModel.selectedStatus ?? "All" },
+                            set: { viewModel.updateSelectedStatus($0 == "All" ? nil : $0) }
+                        )) {
+                            Text("All").tag("All")
+                            Text("Pending").tag("pending")
+                            Text("Confirmed").tag("confirmed")
+                            Text("Shipped").tag("shipped")
+                            Text("Completed").tag("completed")
+                        }
+                        .pickerStyle(.segmented)
+                        .padding(.horizontal)
+
+                        //Order List
+                        List(viewModel.filteredOrders) { order in
+                            NavigationLink {
+                                OrderDetailView(orderId: order.id)
+                            } label: {
+                                VStack(alignment: .leading, spacing: 4) {
+                                    Text(order.order_number).font(.headline)
+                                    Text(order.client_name).font(.subheadline)
+                                    Text(order.status.capitalized)
+                                        .font(.caption)
+                                        .foregroundColor(order.status.statusColor())
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(order.status.statusColor().opacity(0.1))
+                                        .cornerRadius(5)
+                                }
+                                .padding(.vertical, 4)
+                            }
+                        }
+                        .listStyle(.insetGrouped)
+                        .refreshable {
+                            await viewModel.loadOrders()
                         }
                     }
-                    .listStyle(.insetGrouped)
                 }
             }
             .navigationTitle("All Orders")
@@ -53,38 +77,5 @@ struct OrdersView: View {
         .task {
             await viewModel.loadOrders()
         }
-    }
-}
-
-#Preview {
-    NavigationStack {
-        OrdersViewPreviewWrapper()
-    }
-}
-
-struct OrdersViewPreviewWrapper: View {
-    @StateObject var mockViewModel = OrdersViewModel()
-
-    var body: some View {
-        OrdersView()
-            .environmentObject(mockViewModel)
-            .task {
-                mockViewModel.allOrders = [
-                    OrderSummary(
-                        id: UUID(),
-                        order_number: "ORD-1713367852",
-                        status: "pending",
-                        client_name: "John Doe",
-                        company_name: "HealthPlus Inc."
-                    ),
-                    OrderSummary(
-                        id: UUID(),
-                        order_number: "ORD-1713367999",
-                        status: "shipped",
-                        client_name: "Jane Smith",
-                        company_name: "BioPharma Ltd."
-                    )
-                ]
-            }
     }
 }

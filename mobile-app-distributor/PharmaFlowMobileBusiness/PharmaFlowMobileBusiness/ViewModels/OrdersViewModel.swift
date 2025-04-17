@@ -10,7 +10,11 @@ import Foundation
 @MainActor
 class OrdersViewModel: ObservableObject {
     @Published var allOrders: [OrderSummary] = []
+    @Published var filteredOrders: [OrderSummary] = []
+
     @Published var selectedOrder: OrderDetails?
+    @Published var searchQuery: String = ""
+    @Published var selectedStatus: String? = nil
 
     @Published var isLoadingList = false
     @Published var isLoadingDetails = false
@@ -23,9 +27,28 @@ class OrdersViewModel: ObservableObject {
 
         do {
             allOrders = try await OrderService.shared.fetchAllOrders()
+            applyFilters()
         } catch {
             errorMessage = "Failed to load orders: \(error.localizedDescription)"
         }
+    }
+
+    func applyFilters() {
+        filteredOrders = allOrders.filter { order in
+            let matchesSearch = searchQuery.isEmpty || order.order_number.localizedCaseInsensitiveContains(searchQuery)
+            let matchesStatus = selectedStatus == nil || order.status.lowercased() == selectedStatus!.lowercased()
+            return matchesSearch && matchesStatus
+        }
+    }
+
+    func updateSearchQuery(_ query: String) {
+        searchQuery = query
+        applyFilters()
+    }
+
+    func updateSelectedStatus(_ status: String?) {
+        selectedStatus = status
+        applyFilters()
     }
 
     func loadOrderDetails(for id: UUID) async {

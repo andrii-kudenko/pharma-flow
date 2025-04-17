@@ -78,4 +78,13 @@ class OrderService {
         print(String(data: data, encoding: .utf8) ?? "Invalid data")
         return try JSONDecoder().decode(OrderDetails.self, from: data)
     }
+    
+    func fetchOrderStatusSummary() async throws -> OrderStatusSummary {
+        guard let url = URL(string: "\(Constants.baseURL)/orders/status-summary") else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(OrderStatusSummary.self, from: data)
+    }
 }

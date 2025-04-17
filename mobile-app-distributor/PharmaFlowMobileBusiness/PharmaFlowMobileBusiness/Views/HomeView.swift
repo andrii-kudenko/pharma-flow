@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     
     @State private var isNavigatedToScan: Bool = false
+    @StateObject private var viewModel = HomeViewModel()
     
     let username: String = "User"
     
@@ -37,26 +38,45 @@ struct HomeView: View {
                     }
                     .padding()
                 }
+                .refreshable {
+                    await viewModel.loadSummary()
+                }
             }
             .navigationBarHidden(true)
+        }.task {
+            await viewModel.loadSummary()
         }
+
     }
     
 
     private var dashboardSection: some View {
-        VStack {
-            Text("Notifications")
-                .font(.title)
-                .fontWeight(.bold)
-                .padding(.horizontal)
-                .padding(.top, 20)
-            HStack(spacing: 10) {
-                DashboardCard(title: "New Orders", value: "5", icon: "cart.fill", color: .blue)
-                DashboardCard(title: "Stock Issues", value: "10", icon: "exclamationmark.triangle.fill", color: .red)
-            }
-            HStack(spacing: 10) {
-                DashboardCard(title: "Orders in Transit", value: "8", icon: "truck.box.fill", color: .orange)
-                DashboardCard(title: "Delivered Today", value: "12", icon: "checkmark.seal.fill", color: .green)
+        Group {
+            if let summary = viewModel.summary {
+                VStack(alignment: .leading, spacing: 12) {
+                    Text("Notifications")
+                        .font(.title)
+                        .fontWeight(.bold)
+                        .padding(.horizontal)
+                        .padding(.top, 20)
+
+                    HStack(spacing: 10) {
+                        DashboardCard(title: "Pending", value: "\(summary.pending)", icon: "clock.badge.exclamationmark", color: .blue)
+                        DashboardCard(title: "Confirmed", value: "\(summary.confirmed)", icon: "checkmark.circle", color: .green)
+                    }
+
+                    HStack(spacing: 10) {
+                        DashboardCard(title: "Shipped", value: "\(summary.shipped)", icon: "truck.box.fill", color: .orange)
+                        DashboardCard(title: "Completed", value: "\(summary.completed)", icon: "checkmark.seal.fill", color: .gray)
+                    }
+                }
+            } else if viewModel.isLoading {
+                ProgressView("Loading Summary...")
+                    .frame(maxWidth: .infinity, alignment: .center)
+            } else if let error = viewModel.errorMessage {
+                Text(error)
+                    .foregroundColor(.red)
+                    .frame(maxWidth: .infinity, alignment: .center)
             }
         }
     }
@@ -79,8 +99,8 @@ struct HomeView: View {
                                 ) {
                     QuickActionButton(icon: "camera.fill", text: "Scan Product", color: .yellow)
                 }
-                NavigationLink(destination: AddProductView()) {
-                    QuickActionButton(icon: "plus.circle.fill", text: "View Orders", color: .green)
+                NavigationLink(destination: AddProductView(barcode: "")) {
+                    QuickActionButton(icon: "plus.circle.fill", text: "Manual Add Product", color: .green)
                 }
             }
         }

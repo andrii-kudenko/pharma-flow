@@ -13,15 +13,24 @@ function Home() {
     };
 
     return (
-        <div>
-            <h1>Pharma Flow</h1>
-            <p>Welcome to the homepage!</p>
-            <button
-                className="bg-blue-500 text-white px-4 py-2 rounded"
-                onClick={fetchData}
-            >
-                Test API
-            </button>
+        <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: '80vh',
+            textAlign: 'center',
+            padding: '20px'
+        }}>
+            <h1 style={{ fontSize: '3rem', color: '#2c3e50', marginBottom: '10px' }}>
+                🚀 PharmaFlow
+            </h1>
+            <p style={{ fontSize: '1.25rem', color: '#555' }}>
+                Your intelligent pharma distribution dashboard
+            </p>
+            <p style={{ fontSize: '1rem', color: '#aaa' }}>
+                Monitor, manage, and make data-driven decisions
+            </p>
         </div>
     );
 }

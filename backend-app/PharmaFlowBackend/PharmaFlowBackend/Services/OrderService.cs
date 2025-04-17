@@ -126,4 +126,22 @@ public class OrderService
         };
     }
     
+    public async Task<OrderStatusSummaryDto> GetOrderStatusSummaryAsync()
+    {
+        var currentYear = DateTime.UtcNow.Year;
+
+        var orders = await _db.orders
+            .Where(o => o.created_at >= new DateTime(currentYear, 1, 1) &&
+                        o.created_at < new DateTime(currentYear + 1, 1, 1))
+            .ToListAsync();
+
+        return new OrderStatusSummaryDto
+        {
+            Pending = orders.Count(o => o.status == OrderStatus.Pending),
+            Confirmed = orders.Count(o => o.status == OrderStatus.Confirmed),
+            Shipped = orders.Count(o => o.status == OrderStatus.Shipped),
+            Completed = orders.Count(o => o.status == OrderStatus.Completed)
+        };
+    }
+    
 }

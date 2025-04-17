@@ -60,3 +60,10 @@ struct ProductInfo: Decodable {
     let price_per_unit: Double
 }
 
+
+struct OrderStatusSummary: Decodable {
+    let pending: Int
+    let confirmed: Int
+    let shipped: Int
+    let completed: Int
+}

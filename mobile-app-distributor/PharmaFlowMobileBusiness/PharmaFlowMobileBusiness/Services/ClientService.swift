@@ -18,12 +18,12 @@ class ClientService {
 
         let (data, _) = try await URLSession.shared.data(from: url)
         
-        // Print JSON for debugging
+        // print JSON for debugging
         if let json = String(data: data, encoding: .utf8) {
             print("Client list JSON: \(json)")
         }
         
-        // Simple direct decoding
+        //simple direct decoding
         let decoder = JSONDecoder()
         return try decoder.decode([ClientSummary].self, from: data)
     }
@@ -40,7 +40,7 @@ class ClientService {
             print("Client details JSON: \(json)")
         }
         
-        // Simple direct decoding
+        //simple direct decoding
         let decoder = JSONDecoder()
         return try decoder.decode(ClientDetails.self, from: data)
     }

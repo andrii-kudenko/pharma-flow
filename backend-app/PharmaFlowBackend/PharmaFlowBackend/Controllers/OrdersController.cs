@@ -94,5 +94,12 @@ namespace PharmaFlowBackend.Controllers
             var order = await _orderService.GetOrderDetailsByIdAsync(id);
             return order == null ? NotFound() : Ok(order);
         }
+        
+        [HttpGet("status-summary")]
+        public async Task<IActionResult> GetOrderStatusSummary()
+        {
+            var summary = await _orderService.GetOrderStatusSummaryAsync();
+            return Ok(summary);
+        }
     }
 }

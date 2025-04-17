@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PharmaFlowBackend")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+798930abfc7b9b15c1d69211c455c4a3c6b1a714")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5fc3d99be33f2149d125153134e9cad79071a513")]
 [assembly: System.Reflection.AssemblyProductAttribute("PharmaFlowBackend")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PharmaFlowBackend")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
