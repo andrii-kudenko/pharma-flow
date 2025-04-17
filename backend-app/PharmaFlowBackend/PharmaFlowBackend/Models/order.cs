@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace PharmaFlowBackend.Models;
 
@@ -19,11 +20,29 @@ public partial class order
     public DateTime? last_updated { get; set; }
 
     public virtual client? client { get; set; }
+    
+    public decimal total_price { get; }
 
     public virtual ICollection<order_lot> order_lots { get; set; } = new List<order_lot>();
 }
 
 public enum OrderStatus
 {
-    Pending, Confirmed, Shipped, Delivered, Cancelled
+    [EnumMember(Value = "pending")]
+    Pending,
+
+    [EnumMember(Value = "confirmed")]
+    Confirmed,
+
+    [EnumMember(Value = "shipped")]
+    Shipped,
+
+    [EnumMember(Value = "delivered")]
+    Delivered,
+
+    [EnumMember(Value = "cancelled")]
+    Cancelled,
+
+    [EnumMember(Value = "completed")]
+    Completed
 }
