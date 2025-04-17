@@ -130,10 +130,51 @@
         }
       }
     },
-    "/": {
+    "/monthly-revenue": {
       "get": {
         "tags": [
-          "PharmaFlowBackend"
+          "SalesAnalytics"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/top-items": {
+      "get": {
+        "tags": [
+          "SalesAnalytics"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "top",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 5
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -163,7 +204,8 @@
           1,
           2,
           3,
-          4
+          4,
+          5
         ],
         "type": "integer",
         "format": "int32"
@@ -377,6 +419,10 @@
           },
           "client": {
             "$ref": "#/components/schemas/client"
+          },
+          "total_price": {
+            "type": "number",
+            "format": "double"
           },
           "order_lots": {
             "type": "array",
