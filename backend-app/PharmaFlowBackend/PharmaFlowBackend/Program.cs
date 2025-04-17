@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using PharmaFlowBackend.Data;
+using PharmaFlowBackend.Services;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,19 @@ builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql("Host=d
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddScoped<SalesAnalyticsService>();
+
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000") // Replace with your React app's URL
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 
 var app = builder.Build();
 
@@ -24,16 +38,18 @@ if (app.Environment.IsDevelopment())
 if (!app.Environment.IsDevelopment())
 {
     app.UseHttpsRedirection();
+    
 }
 
+app.UseCors("AllowReactApp");
 app.MapControllers();
 
-app.MapGet("/", (AppDbContext db) =>
-    Results.Json(new
-    {
-        ProductId = 1,
-        Name = "Sample Product",
-        Price = 19.99
-    }));
+//app.MapGet("/", (AppDbContext db) =>
+//    Results.Json(new
+//    {
+//        ProductId = 1,
+//        Name = "Sample Product",
+//        Price = 19.99
+//    }));
 
 app.Run();
