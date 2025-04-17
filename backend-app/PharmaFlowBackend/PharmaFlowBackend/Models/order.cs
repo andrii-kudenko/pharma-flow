@@ -21,7 +21,7 @@ public partial class order
 
     public virtual client? client { get; set; }
     
-    public decimal total_price { get; }
+    public decimal total_price { get; set; }
 
     public virtual ICollection<order_lot> order_lots { get; set; } = new List<order_lot>();
 }

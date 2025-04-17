@@ -3,5 +3,24 @@
 node_modules/
 *.xcuserstate
 .vs/
+
+# Rider / JetBrains IDE settings
+.idea/
+
+# Build and cache files
+*.cache
+*.dll
+*.nuget.*
+project.assets.json
+PharmaFlowBackend.assets.cache
+*.targets
+*.props
+*.info
+*.editorconfig
+*.g.*
+
+# Optional: user-specific configs
+*.user
+*.vs/
 backend-app/PharmaFlowBackend/PharmaFlowBackend/bin/
 backend-app/PharmaFlowBackend/PharmaFlowBackend/obj/
