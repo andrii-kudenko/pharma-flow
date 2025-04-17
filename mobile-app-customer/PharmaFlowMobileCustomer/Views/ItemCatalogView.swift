@@ -28,6 +28,9 @@ struct ItemCatalogView: View {
                                     Text("$\(price)")
                                         .foregroundColor(.secondary)
                                 }
+                                Text("In stock: \(item.availableQuantity)")
+                                    .font(.caption)
+                                    .foregroundColor(item.availableQuantity > 0 ? .green : .red)
                             }
                         }
                     }

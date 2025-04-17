@@ -4,61 +4,101 @@
 //
 //  Created by Dan on 2025-03-06.
 //
-
 import SwiftUI
 
 struct CartView: View {
-    @State private var cartItems = [
-        Product(name: "Gloves", availability: "In Stock", price: "$10", description: "Disposable medical gloves."),
-        Product(name: "Mask", availability: "In Stock", price: "$5", description: "Surgical protective mask.")
-    ]
+    @ObservedObject private var cart = CartViewModel.shared
+    @State private var isPlacingOrder = false
+    @State private var showSuccess = false
+    @State private var showError = false
+    @State private var errorMessage = ""
+    
+    // TEMP: Replace this with actual client ID when using auth
+    let fakeClientId = UUID()
 
     var body: some View {
         NavigationView {
             VStack {
-                Text("Cart")
-                    .font(.largeTitle)
-                    .padding()
-
-                List {
-                    ForEach(cartItems) { product in
-                        HStack {
+                if cart.items.isEmpty {
+                    Spacer()
+                    Text("🛒 Your cart is empty")
+                        .foregroundColor(.gray)
+                        .font(.title3)
+                    Spacer()
+                } else {
+                    List {
+                        ForEach(cart.items, id: \.item.id) { entry in
                             VStack(alignment: .leading) {
-                                Text(product.name)
+                                Text(entry.item.codeName)
                                     .font(.headline)
-                                Text("Price: \(product.price)")
-                                    .foregroundColor(.gray)
-                            }
-                            Spacer()
-                            Button(action: {
-                                cartItems.removeAll { $0.id == product.id }
-                            }) {
-                                Image(systemName: "trash")
-                                    .foregroundColor(.red)
+                                
+                                Text("Qty: \(entry.quantity)")
+                                if let price = entry.item.priceUsd {
+                                    Text("Subtotal: $\(price * Decimal(entry.quantity))")
+                                        .font(.subheadline)
+                                        .foregroundColor(.secondary)
+                                }
                             }
                         }
-                        .padding()
+                        .onDelete { indexSet in
+                            for index in indexSet {
+                                let itemId = cart.items[index].item.id
+                                cart.remove(itemId: itemId)
+                            }
+                        }
                     }
-                }
-
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Add a Note to the Order:")
-                        .font(.subheadline)
-                    TextField("Enter a note...", text: .constant(""))
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .padding(.bottom)
-
-                    Button(action: {}) {
-                        Text("Place Order")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(8)
+                    
+                    VStack(spacing: 12) {
+                        Text("Total: $\(cart.totalPrice)")
+                            .font(.title2)
+                            .bold()
+                        
+                        Button(action: placeOrder) {
+                            if isPlacingOrder {
+                                ProgressView()
+                                    .progressViewStyle(CircularProgressViewStyle())
+                            } else {
+                                Text("Place Order")
+                                    .bold()
+                            }
+                        }
+                        .disabled(isPlacingOrder)
+                        .buttonStyle(.borderedProminent)
                     }
+                    .padding()
                 }
-                .padding()
+            }
+            .navigationTitle("Cart")
+            .alert("Order Placed ✅", isPresented: $showSuccess) {
+                Button("OK") { }
+            } message: {
+                Text("Your order was successfully placed.")
+            }
+            .alert("Order Failed ❌", isPresented: $showError) {
+                Button("OK") { }
+            } message: {
+                Text(errorMessage)
             }
         }
     }
+
+    private func placeOrder() {
+        Task {
+            isPlacingOrder = true
+            do {
+                let orderRequest = cart.toOrderRequest(clientId: fakeClientId)
+                let _ = try await OrderService.shared.submitOrder(request: orderRequest)
+                cart.clear()
+                showSuccess = true
+            } catch {
+                errorMessage = error.localizedDescription
+                showError = true
+            }
+            isPlacingOrder = false
+        }
+    }
+}
+
+#Preview {
+    CartView()
 }

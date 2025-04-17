@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using PharmaFlowBackend.DTOs;
 using PharmaFlowBackend.Models;
 using PharmaFlowBackend.Services;
 
@@ -17,11 +18,21 @@ public class ItemsController : ControllerBase
         _itemService = itemService;
     }
     
-    //getAllItems
+    //for client side use 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<item>>> GetAllItems()
+    public async Task<ActionResult<IEnumerable<item>>> GetAllItemsWithStock()
     {
-        var items = await _itemService.GetAllItemsAsync();
+        var items = await _itemService.GetAllItemsWithStockAsync();
         return Ok(items);
+    }
+    
+    //for cient side use
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetItemWithStockById(Guid id)
+    {
+        var item = await _itemService.GetItemWithStockByIdAsync(id);
+        if (item == null) return NotFound();
+
+        return Ok(item);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 
 namespace PharmaFlowBackend.Models;
 
@@ -27,5 +28,21 @@ public partial class order
 
 public enum OrderStatus
 {
-    Pending, Confirmed, Shipped, Delivered, Cancelled , Completed
+    [EnumMember(Value = "pending")]
+    Pending,
+
+    [EnumMember(Value = "confirmed")]
+    Confirmed,
+
+    [EnumMember(Value = "shipped")]
+    Shipped,
+
+    [EnumMember(Value = "delivered")]
+    Delivered,
+
+    [EnumMember(Value = "cancelled")]
+    Cancelled,
+
+    [EnumMember(Value = "completed")]
+    Completed
 }
