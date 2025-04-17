@@ -38,7 +38,7 @@ const TotalRevenueChart = ({
                 label: title,
                 data: data.map((item) => item.value),
                 borderColor: "blue",
-                backgroundColor: "rgba(0, 123, 255, 0.2)",
+                backgroundColor: "rgba(121, 157, 236, 0.96)",
                 tension: 0.3,
                 fill: true,
             },
