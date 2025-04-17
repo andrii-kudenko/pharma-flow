@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     var body: some View {
         TabView {
-            ProductCatalogView()
+            ItemCatalogView()
                 .tabItem {
                     Label("Catalog", systemImage: "list.bullet")
                 }

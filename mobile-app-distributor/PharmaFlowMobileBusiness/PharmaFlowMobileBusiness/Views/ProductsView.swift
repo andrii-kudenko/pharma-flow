@@ -11,7 +11,7 @@ struct ProductsView: View {
     @State private var searchText = ""
     @State private var selectedFilter: String = "All"
 
-    let username: String
+    let username: String = "User"
     
     let filters = ["All", "Low Stock", "High Stock"]
     
