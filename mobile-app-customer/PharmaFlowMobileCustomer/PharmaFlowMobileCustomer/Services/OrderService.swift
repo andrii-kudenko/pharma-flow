@@ -57,4 +57,24 @@ class OrderService {
             throw OrderError.serverError("Failed to decode response: \(error.localizedDescription)")
         }
     }
+    
+    func fetchAllOrders() async throws -> [OrderSummary] {
+        guard let url = URL(string: "\(Constants.baseURL)/orders/all") else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        print(String(data: data, encoding: .utf8) ?? "Invalid data")
+        return try JSONDecoder().decode([OrderSummary].self, from: data)
+    }
+
+    func fetchOrderDetails(id: UUID) async throws -> OrderDetails {
+        guard let url = URL(string: "\(Constants.baseURL)/orders/details/\(id)") else {
+            throw URLError(.badURL)
+        }
+
+        let (data, _) = try await URLSession.shared.data(from: url)
+        print(String(data: data, encoding: .utf8) ?? "Invalid data")
+        return try JSONDecoder().decode(OrderDetails.self, from: data)
+    }
 }

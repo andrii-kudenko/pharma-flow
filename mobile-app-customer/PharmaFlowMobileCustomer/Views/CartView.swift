@@ -6,9 +6,12 @@
 //
 import SwiftUI
 
+import SwiftUI
+
 struct CartView: View {
     @ObservedObject private var cart = CartViewModel.shared
-
+    @State private var showOrderSuccessAlert = false
+    
     // TEMP: Replace this with actual client ID when using auth
     let fakeClientId = UUID(uuidString: "079729ad-0877-4473-8a08-3816105f162b")!
 
@@ -23,16 +26,28 @@ struct CartView: View {
                 }
             }
             .navigationTitle("Cart")
-            .overlay {
-                if let confirmation = cart.confirmation {
-                    OrderConfirmationOverlay(confirmation: confirmation).animation(.easeInOut)
-                }
+            .onChange(of: cart.confirmation) { newValue in
+                // Show alert when confirmation is received
+                showOrderSuccessAlert = newValue != nil
             }
-            .alert("Order Failed ❌", isPresented: $cart.showError) {
-                Button("OK") { cart.showError = false }
-            } message: {
-                Text(cart.errorMessage)
+        }
+        // Success alert
+        .alert("Order Placed Successfully", isPresented: $showOrderSuccessAlert) {
+            Button("OK") {
+                cart.confirmation = nil
             }
+        } message: {
+            if let confirmation = cart.confirmation {
+                Text("Your order #\(confirmation.orderNumber) has been placed with \(confirmation.totalItems) item(s).\nDate: \(confirmation.createdAt.formatted(.dateTime))")
+            } else {
+                Text("")
+            }
+        }
+        // Error alert
+        .alert("Order Failed ❌", isPresented: $cart.showError) {
+            Button("OK") { cart.showError = false }
+        } message: {
+            Text(cart.errorMessage)
         }
     }
 }
@@ -122,8 +137,6 @@ private struct CartFooter: View {
         .padding()
     }
 }
-
-
 #Preview {
     CartView()
 }

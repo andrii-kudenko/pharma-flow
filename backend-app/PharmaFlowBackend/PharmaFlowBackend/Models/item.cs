@@ -23,7 +23,7 @@ public partial class item
 
     public bool? can_be_ordered { get; set; }
 
-    public decimal? price_usd { get; set; }
+    public decimal price_usd { get; set; }
 
     public virtual ICollection<lot> lots { get; set; } = new List<lot>();
 }

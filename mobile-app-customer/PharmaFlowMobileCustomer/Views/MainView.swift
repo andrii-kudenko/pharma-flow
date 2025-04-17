@@ -20,6 +20,11 @@ struct MainView: View {
                     Label("Cart", systemImage: "cart")
                 }
             
+            OrdersView()
+                .tabItem{
+                    Label("Orders", systemImage: "shippingbox.fill")
+                }
+            
             AccountView()
                 .tabItem {
                     Label("Account", systemImage: "person")

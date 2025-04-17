@@ -8,13 +8,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f93e53d6-9896-476a-822c-b4403dae719d" name="Changes" comment="Minimal updates and fixes in models">
-      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Cart.swift" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrderConfirmationOverlay.swift" afterDir="false" />
+    <list default="true" id="f93e53d6-9896-476a-822c-b4403dae719d" name="Changes" comment="Create Order Bugs Fixed">
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/ClientsController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/DTOs/ClientDetailDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/DTOs/ClientSummaryDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/DTOs/OrderDetailsDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/DTOs/OrderSummaryDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PharmaFlowBackend/Services/ClientService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/OrderDetailViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/OrdersViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrdersViews/OrderDetailView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrdersViews/OrdersView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Models/Client.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Services/ClientService.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Services/OrderService.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Utilities/Colors.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/ViewModels/ClientsViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/ViewModels/OrderDetailViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/ViewModels/OrdersViewModel.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/Clients/ClientDetailView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/Clients/ClientsView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/Orders/OrderDetailView.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/Orders/OrdersView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.PharmaFlowBackend/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/OrdersController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Controllers/OrdersController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Data/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Data/AppDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Models/order.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Models/order.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Models/item.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Models/item.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/Services/OrderService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/Services/OrderService.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/bin/Debug/net9.0/PharmaFlowBackend.dll" afterDir="false" />
@@ -27,17 +45,19 @@
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/PharmaFlowBackend.sourcelink.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/ref/PharmaFlowBackend.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/Debug/net9.0/refint/PharmaFlowBackend.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/PharmaFlowBackend/obj/rider.project.restore.info" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Order.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Order.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Models/Product.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/Constants.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/Constants.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/OrderService.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/Services/OrderService.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/CartViewModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/PharmaFlowMobileCustomer/ViewModels/CartViewModel.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/CartView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/CartView.swift" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/MainView.swift" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrderDetailView.swift" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../mobile-app-customer/PharmaFlowMobileCustomer/Views/OrdersView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.pbxproj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness.xcodeproj/project.xcworkspace/xcuserdata/dan_mac.xcuserdatad/UserInterfaceState.xcuserstate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Models/ClientModel.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Models/OrderModel.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Models/OrderModel.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Services/Constants.swift" beforeDir="false" afterPath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Services/Constants.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/ClientDetailView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/ClientsView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/OrderDetailView.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../mobile-app-distributor/PharmaFlowMobileBusiness/PharmaFlowMobileBusiness/Views/OrdersView.swift" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +70,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/../.." value="main" />
+        <entry key="$PROJECT_DIR$/../.." value="feature/create-order" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
@@ -96,7 +116,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "feature/create-order",
+    "git-widget-placeholder": "feature/view-Orders",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -165,7 +185,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744845356293</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Create Order Bugs Fixed">
+      <option name="closed" value="true" />
+      <created>1744880574871</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744880574871</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +205,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="getAllItems APIController and Service files added" />
     <MESSAGE value="Minimal updates and fixes in models" />
-    <option name="LAST_COMMIT_MESSAGE" value="Minimal updates and fixes in models" />
+    <MESSAGE value="Create Order Bugs Fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Create Order Bugs Fixed" />
   </component>
 </project>

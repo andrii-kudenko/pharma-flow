@@ -32,7 +32,7 @@ struct OrderItemRequest: Codable {
     // This is handled by JSONEncoder's keyEncodingStrategy now
 }
 
-struct OrderConfirmation: Codable, Identifiable {
+struct OrderConfirmation: Codable, Identifiable, Equatable {
     let id: UUID
     let orderNumber: String
     let totalItems: Int
@@ -52,4 +52,33 @@ enum OrderError: Error, LocalizedError {
         case .insufficientStock(let msg): return "Insufficient Stock: \(msg)"
         }
     }
+}
+
+//MARK: Used for ViewAll Orders and ViewOrderDetails
+
+struct OrderSummary: Identifiable, Decodable {
+    let id: UUID
+    let order_number: String
+    let status: String
+    let client_name: String
+    let company_name: String
+}
+
+struct OrderDetails: Identifiable, Decodable {
+    let id: UUID
+    let order_number: String
+    let status: String
+    let client_name: String
+    let company_name: String
+    let delivery_address: String
+    let total_items: Int
+    let total_price: Double
+    let products: [ProductInfo]
+}
+
+struct ProductInfo: Decodable {
+    let code_name: String
+    let description: String
+    let quantity: Int
+    let price_per_unit: Double
 }

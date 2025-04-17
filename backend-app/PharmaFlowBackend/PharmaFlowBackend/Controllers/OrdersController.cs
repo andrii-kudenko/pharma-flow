@@ -79,5 +79,20 @@ namespace PharmaFlowBackend.Controllers
             await _db.SaveChangesAsync();
             return NoContent();
         }
+        
+        
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllOrders()
+        {
+            var orders = await _orderService.GetAllOrdersAsync();
+            return Ok(orders);
+        }
+
+        [HttpGet("details/{id}")]
+        public async Task<IActionResult> GetOrderDetails(Guid id)
+        {
+            var order = await _orderService.GetOrderDetailsByIdAsync(id);
+            return order == null ? NotFound() : Ok(order);
+        }
     }
 }

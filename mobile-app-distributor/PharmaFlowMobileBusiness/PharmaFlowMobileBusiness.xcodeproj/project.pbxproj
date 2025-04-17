@@ -10,9 +10,22 @@
 		F8D2C4652D7429B7006A717E /* PharmaFlowMobileBusiness.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PharmaFlowMobileBusiness.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F8F5A3472DB10E8B005CCC0B /* Exceptions for "PharmaFlowMobileBusiness" folder in "PharmaFlowMobileBusiness" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = F8D2C4642D7429B7006A717E /* PharmaFlowMobileBusiness */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		F8D2C4672D7429B7006A717E /* PharmaFlowMobileBusiness */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F8F5A3472DB10E8B005CCC0B /* Exceptions for "PharmaFlowMobileBusiness" folder in "PharmaFlowMobileBusiness" target */,
+			);
 			path = PharmaFlowMobileBusiness;
 			sourceTree = "<group>";
 		};
@@ -255,6 +268,7 @@
 				DEVELOPMENT_TEAM = L767V59FPX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PharmaFlowMobileBusiness/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +298,7 @@
 				DEVELOPMENT_TEAM = L767V59FPX;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PharmaFlowMobileBusiness/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
