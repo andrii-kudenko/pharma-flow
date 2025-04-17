@@ -59,7 +59,7 @@ const HighValueCustomers = () => {
     }, []); // Empty dependency array ensures it runs only once
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-bold relative">
+            <h2 className="text-2xl font-bold mb-4 relative">
                 High Value Customers
                 <div className="absolute top-4 right-4">
                     <label for="year-select">Select a Year:</label>
@@ -85,6 +85,7 @@ const HighValueCustomers = () => {
                         label="# of Orders"
                         color="rgba(121, 157, 236, 0.96)"
                     />
+                    <br />
                     <HighValueCustomersChart
                         data={spendingByCompany}
                         title="By revenue"

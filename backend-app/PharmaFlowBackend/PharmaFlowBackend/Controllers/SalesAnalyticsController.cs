@@ -47,6 +47,13 @@ namespace PharmaFlowBackend.Controllers
             var result = await _service.GetHighValueCustomersByYearAsync(year);
             return Ok(result);
         }
+        [HttpGet("financial-report")]
+        public async Task<IActionResult> GetFinancialReport([FromQuery] int year)
+        {
+            var result = await _service.GetFinancialReportAsync(year);
+            return Ok(result);
+        }
+
 
     }
 }

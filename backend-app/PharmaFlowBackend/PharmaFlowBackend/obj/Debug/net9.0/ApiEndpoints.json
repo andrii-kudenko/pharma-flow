@@ -90,6 +90,22 @@
   },
   {
     "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
+    "Method": "GetFinancialReport",
+    "RelativePath": "financial-report",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
     "Method": "GetHighValueCustomers",
     "RelativePath": "high-value-cutomers",
     "HttpMethod": "GET",

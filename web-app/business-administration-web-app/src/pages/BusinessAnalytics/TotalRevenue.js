@@ -88,7 +88,7 @@ const TotalRevenue = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-xl font-bold mb-4 relative">
+            <h2 className="text-2xl font-bold mb-4 relative">
                 Inspect Total Revenue
                 <div className="absolute top-4 right-4">
                     <label for="year-select">Select a Year:</label>
@@ -113,11 +113,13 @@ const TotalRevenue = () => {
                         data={monthlyRevenue}
                         title="Revenue Trends"
                     />{" "}
+                    <br />
                     <TotalRevenueChart
                         type="bar"
                         data={topFiveProducts}
                         title="Top-Selling Products"
                     />
+                    <br />
                     <TotalRevenueChart
                         type="pie"
                         data={revenueBreakdownProducts}

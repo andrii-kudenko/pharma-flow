@@ -22,3 +22,5 @@ PharmaFlowBackend.assets.cache
 # Optional: user-specific configs
 *.user
 *.vs/
+
+**/Debug/

@@ -258,6 +258,28 @@
         }
       }
     },
+    "/financial-report": {
+      "get": {
+        "tags": [
+          "SalesAnalytics"
+        ],
+        "parameters": [
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Values": {
       "get": {
         "tags": [

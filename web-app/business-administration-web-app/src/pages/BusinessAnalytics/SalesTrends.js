@@ -74,7 +74,7 @@ const SalesTrends = () => {
 
     return (
         <div className="p-6">
-            <h2 className="text-2xl font-bold relative">
+            <h2 className="text-2xl font-bold mb-4 relative">
                 Sales Trends Over Time{" "}
                 <div className="absolute top-4 right-4">
                     <label for="year-select">Select a Year:</label>
@@ -95,11 +95,13 @@ const SalesTrends = () => {
             ) : (
                 <>
                     <SalesTrendsChart data={monthlySales} />
+                    <br />
                     <TotalRevenueChart
                         type="bar"
                         data={topFiveProducts}
                         title="Most Bought Products"
                     />
+                    <br />
                     <TotalRevenueChart
                         type="pie"
                         data={salesBreakdownProducts}
