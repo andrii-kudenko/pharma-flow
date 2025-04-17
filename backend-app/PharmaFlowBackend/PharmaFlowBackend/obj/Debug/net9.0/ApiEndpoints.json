@@ -90,6 +90,38 @@
   },
   {
     "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
+    "Method": "GetHighValueCustomers",
+    "RelativePath": "high-value-cutomers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
+    "Method": "GetMonthlyQuantity",
+    "RelativePath": "monthly-quantity",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
     "Method": "GetMonthlyRevenue",
     "RelativePath": "monthly-revenue",
     "HttpMethod": "GET",
@@ -108,6 +140,27 @@
     "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
     "Method": "GetTopItemsByRevenue",
     "RelativePath": "top-items",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "top",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PharmaFlowBackend.Controllers.SalesAnalyticsController",
+    "Method": "GetTopItemsByQuantity",
+    "RelativePath": "top-items-quantity",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -1,6 +1,6 @@
-﻿namespace PharmaFlowBackend.DTO
+﻿namespace PharmaFlowBackend.DTOs
 {
-    public class ItemRevenueDto
+    public class MonthlyRevenueDto
     {
         public string Key { get; set; } = string.Empty;
         public decimal Value { get; set; }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PharmaFlowBackend.Data;
-using PharmaFlowBackend.DTO;
+using PharmaFlowBackend.DTOs;
 using PharmaFlowBackend.Models;
 
 namespace PharmaFlowBackend.Services
@@ -67,6 +67,102 @@ namespace PharmaFlowBackend.Services
                 })
                 .OrderByDescending(x => x.Value)
                 
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<MonthlyQuantityDto>> GetMonthlyItemQuantitiesAsync(int? year)
+        {
+            int targetYear = year ?? DateTime.UtcNow.Year;
+
+            // Step 1: Get all completed orders in that year
+            var completedOrderIds = await _db.orders
+                .Where(o => o.created_at.HasValue &&
+                            o.created_at.Value.Year == targetYear &&
+                            o.status == OrderStatus.Completed)
+                .Select(o => new { o.id, o.created_at })
+                .ToListAsync();
+
+            // Step 2: Join with order_lots to get quantities and dates
+            var joinedData = await _db.order_lots
+                .ToListAsync();
+
+            var monthlyQuantities = joinedData
+                .Join(completedOrderIds, ol => ol.order_id, o => o.id, (ol, o) => new
+                {
+                    Month = o.created_at!.Value.Month,
+                    Quantity = ol.quantity
+                })
+                .GroupBy(x => x.Month)
+                .Select(g => new
+                {
+                    Month = g.Key,
+                    TotalQuantity = g.Sum(x => x.Quantity)
+                })
+                .ToList();
+
+            var result = Enumerable.Range(1, 12)
+                .Select(m => new MonthlyQuantityDto
+                {
+                    Key = new DateTime(targetYear, m, 1).ToString("MMMM"),
+                    Value = monthlyQuantities.FirstOrDefault(d => d.Month == m)?.TotalQuantity ?? 0
+                })
+                .ToList();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<ItemQuantityDto>> GetTopItemsByQuantityAsync(int year, int top = 5)
+        {
+            var result = await _db.order_lots
+                .Join(_db.orders, ol => ol.order_id, o => o.id, (ol, o) => new { ol, o })
+                .Where(x =>
+                    x.o.created_at.HasValue &&
+                    x.o.created_at.Value.Year == year &&
+                    x.o.status == OrderStatus.Completed)
+                .Join(_db.lots, temp => temp.ol.lot_id, l => l.id, (temp, l) => new { temp.ol, temp.o, l })
+                .Join(_db.items, temp => temp.l.item_id, i => i.id, (temp, i) => new
+                {
+                    ItemName = i.code_name,
+                    QuantitySold = temp.ol.quantity
+                })
+                .GroupBy(x => x.ItemName)
+                .Select(g => new ItemQuantityDto
+                {
+                    Key = g.Key,
+                    Value = g.Sum(x => x.QuantitySold)
+                })
+                .OrderByDescending(x => x.Value)
+                
+                .ToListAsync();
+
+            return result;
+        }
+
+        public async Task<IEnumerable<HighValueCustomerDto>> GetHighValueCustomersByYearAsync(int year, int top = 10)
+        {
+            var result = await _db.orders
+                .Where(o =>
+                    o.created_at.HasValue &&
+                    o.created_at.Value.Year == year &&
+                    o.status == OrderStatus.Completed &&
+                    o.client_id != null)
+                .GroupBy(o => o.client_id)
+                .Select(g => new HighValueCustomerDto
+                {
+                    ClientId = (Guid)g.Key,
+                    CompanyName = _db.clients
+                        .Where(c => c.id == g.Key)
+                        .Select(c => c.company_name)
+                        .FirstOrDefault(),
+                    OrdersCount = g.Count(),
+                    TotalSpent = g.Sum(x => x.total_price),
+                    AverageOrderValue = g.Average(x => x.total_price),
+                    LastOrderDate = g.Max(x => x.created_at)
+                })
+                .OrderByDescending(x => x.TotalSpent)
+                .Take(top)
                 .ToListAsync();
 
             return result;

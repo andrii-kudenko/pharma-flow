@@ -29,5 +29,24 @@ namespace PharmaFlowBackend.Controllers
             return Ok(result);
         }
 
+        [HttpGet("monthly-quantity")]
+        public async Task<IActionResult> GetMonthlyQuantity([FromQuery] int? year)
+        {
+            var result = await _service.GetMonthlyItemQuantitiesAsync(year);
+            return Ok(result);
+        }
+        [HttpGet("top-items-quantity")]
+        public async Task<IActionResult> GetTopItemsByQuantity([FromQuery] int year, [FromQuery] int top = 5)
+        {
+            var result = await _service.GetTopItemsByQuantityAsync(year, top);
+            return Ok(result);
+        }
+        [HttpGet("high-value-cutomers")]
+        public async Task<IActionResult> GetHighValueCustomers([FromQuery] int year)
+        {
+            var result = await _service.GetHighValueCustomersByYearAsync(year);
+            return Ok(result);
+        }
+
     }
 }

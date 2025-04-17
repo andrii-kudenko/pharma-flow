@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ChartComponent from "../../components/Charts/TotalRevenueChart";
 import SalesTrendsChart from "../../components/Charts/SalesTrendsChart";
+import TotalRevenueChart from "../../components/Charts/TotalRevenueChart";
 
 const salesData = [
     { name: "Jan", value: 300 },
@@ -25,6 +26,8 @@ const projectedSalesData = {
 
 const SalesTrends = () => {
     const [monthlySales, setMonthlySales] = useState([]);
+    const [topFiveProducts, setTopFiveProducts] = useState([]);
+    const [salesBreakdownProducts, setSalesBreakdownProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [year, setYear] = useState("2025"); // State to store the selected year
 
@@ -35,24 +38,33 @@ const SalesTrends = () => {
     };
 
     const fetchData = async (year = 2025) => {
-        fetch(`http://localhost:5062/monthly-revenue?year=${year}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error("Network response was not ok");
-                }
-                return response.json();
-            })
-            .then((jsonData) => {
-                setMonthlySales(jsonData);
-                console.log(jsonData);
-                console.log(salesData);
-            })
-            .catch((error) => {
-                console.error("Error fetching data:", error);
-            })
-            .finally(() => {
-                setLoading(false); // Set loading to false after data is fetched
-            });
+        setLoading(true); // Set loading to true before fetching data
+        try {
+            // Fetch data for the first chart
+            const salesResponse = await fetch(
+                `http://localhost:5062/monthly-quantity?year=${year}`
+            );
+            if (!salesResponse.ok)
+                throw new Error("Failed to fetch monthly revenue data");
+            const salesData = await salesResponse.json();
+            setMonthlySales(salesData);
+
+            // Fetch data for the second chart
+            const salesBreakdownResponse = await fetch(
+                `http://localhost:5062/top-items-quantity?year=${year}&top=5`
+            );
+            if (!salesBreakdownResponse.ok)
+                throw new Error("Failed to fetch top selling data");
+            const salesBreakdownData = await salesBreakdownResponse.json();
+            const topFiveProducts = salesBreakdownData.slice(0, 5); // Take the first 5 records
+            console.log("Top Five Products:", topFiveProducts);
+            setTopFiveProducts(topFiveProducts); // Update state with the top 5 products
+            setSalesBreakdownProducts(salesBreakdownData);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        } finally {
+            setLoading(false); // Set loading to false after data is fetched
+        }
     };
 
     // Use useEffect to trigger fetchData on page load
@@ -81,7 +93,19 @@ const SalesTrends = () => {
             {loading ? (
                 <p>Loading...</p> // Display a loading indicator while data is being fetched
             ) : (
-                <SalesTrendsChart data={monthlySales} /> // Render the chart once data is ready
+                <>
+                    <SalesTrendsChart data={monthlySales} />
+                    <TotalRevenueChart
+                        type="bar"
+                        data={topFiveProducts}
+                        title="Most Bought Products"
+                    />
+                    <TotalRevenueChart
+                        type="pie"
+                        data={salesBreakdownProducts}
+                        title="Sales Breakdown"
+                    />
+                </>
             )}
         </div>
     );
